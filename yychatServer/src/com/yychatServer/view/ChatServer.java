@@ -5,11 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import com.chatserver.controller.StartServer;
+import controller.StartServer;
 
-
-
-public class ChatServer extends JFrame implements ActionListener{//alt+/
+public class ChatServer extends JFrame implements ActionListener{//Alt+/
 	JButton jb1;
 	JButton jb2;
 	JPanel jp;
@@ -18,6 +16,7 @@ public class ChatServer extends JFrame implements ActionListener{//alt+/
 		jb1=new JButton("启动服务器");
 		jb1.addActionListener(this);
 		jb2=new JButton("停止服务器");
+		jb2.addActionListener(this);
 		jp=new JPanel();
 		jp.add(jb1);
 		jp.add(jb2);
@@ -29,16 +28,20 @@ public class ChatServer extends JFrame implements ActionListener{//alt+/
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		
+		
 	}
 
 	public static void main(String[] args) {
 		ChatServer chatServer=new ChatServer();
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		new StartServer();//监听端口，建立和客户端的连接
+		if(arg0.getSource()==jb1) new StartServer();//监听端口，建立连接（客户端的链接）
+		if(arg0.getSource()==jb2) System.exit(0);;
+		// TODO Auto-generated method stub
 		
 	}
 
